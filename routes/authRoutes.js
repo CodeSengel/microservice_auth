@@ -1,9 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const publicdataController = require('../controllers/publicdataController');
+const authController = require("../controllers/authController");
 
-
-router.get('/platformlistpublic', publicdataController.getAvailablePlatform); 
-
+router.post("/register", authController.postRegister);
+router.post("/login", authController.postLogin);
+router.get("/isloggedin", authController.getIsLoggedIn);
+router.get("/logout", authController.getLogout);
 
 module.exports = router;

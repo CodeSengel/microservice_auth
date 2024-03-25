@@ -48,14 +48,12 @@ const getIsLoggedIn = async (req, res) => {
   try {
     const data = await isLoggedIn();
 
-    res
-      .status(200)
-      .json({
-        message: "IsLogged renvoyé avec succes ",
-        isloggedin: data,
-        autre: data,
-        tokens: tokens,
-      });
+    res.status(200).json({
+      message: "IsLogged renvoyé avec succes ",
+      isloggedin: data,
+      autre: data,
+      tokens: tokens,
+    });
   } catch (error) {
     // Gérez les erreurs et renvoyez un code d'erreur
     res
@@ -70,13 +68,11 @@ const getLogout = async (req, res) => {
     const data = await logout();
     console.log("***New Logout***", tokens);
     const temp1 = await isLoggedIn();
-    res
-      .status(200)
-      .json({
-        message: "logout renvoyé avec succes ",
-        another: temp1,
-        tokens: tokens,
-      });
+    res.status(200).json({
+      message: "logout renvoyé avec succes ",
+      another: temp1,
+      tokens: tokens,
+    });
   } catch (error) {
     // Gérez les erreurs et renvoyez un code d'erreur
     res.status(500).json({ message: "Erreur lors de l' logout : " + error });

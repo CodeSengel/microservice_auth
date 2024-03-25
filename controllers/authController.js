@@ -27,16 +27,19 @@ const postRegister = async (req, res) => {
 
 // Contrôleur pour gérer l'inscription des utilisateurs
 const postLogin = async (req, res) => {
-  console.log("login demandé coté authservice");
+  console.log("login demandé coté authservice avec : ", req.body);
   try {
     // Extrayez les données de la requête
     const { email, password } = req.body;
+    console.log("donc là on va attendre");
     const data = await login({ email, password });
+    console.log("***data***", data);
     console.log("***New Login***", tokens);
 
     res.status(200).json({ message: "Connexion réussie", tokens: tokens });
   } catch (error) {
     // Gérez les erreurs et renvoyez un code d'erreur
+    console("voici l erreur ", error);
     res
       .status(500)
       .json({ message: "Erreur lors de l'la connexion : " + error });

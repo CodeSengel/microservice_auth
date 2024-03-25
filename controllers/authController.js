@@ -9,7 +9,8 @@ const postRegister = async (req, res) => {
   console.log("c est arrivé coté authController");
   try {
     // Extrayez les données de la requête
-    const { email, password, ...meta } = req.body;
+    const body = JSON.parse(req.body.toString());
+    const { email, password, ...meta } = body;
 
     console.log("data ", email, password);
     // Appelez la méthode d'inscription avec les données de l'utilisateur
@@ -29,8 +30,9 @@ const postRegister = async (req, res) => {
 const postLogin = async (req, res) => {
   console.log("login demandé coté authservice avec : ", req.body);
   try {
+    const body = JSON.parse(req.body.toString());
     // Extrayez les données de la requête
-    const { email, password } = req.body;
+    const { email, password } = body;
     console.log("donc là on va attendre");
     const data = await login({ email, password });
     console.log("***data***", data);

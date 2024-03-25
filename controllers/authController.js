@@ -39,7 +39,7 @@ const postLogin = async (req, res) => {
     res.status(200).json({ message: "Connexion réussie", tokens: tokens });
   } catch (error) {
     // Gérez les erreurs et renvoyez un code d'erreur
-    console("voici l erreur ", error);
+    console.log("voici l erreur ", error);
     res
       .status(500)
       .json({ message: "Erreur lors de l'la connexion : " + error });
